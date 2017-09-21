@@ -1,0 +1,85 @@
+---
+title: "Task 4: Becoming a databender"
+output:
+  html_document:
+    theme: cerulean
+    code_folding: hide
+    
+---
+
+```{r, include=FALSE}
+library(dplyr)
+library(mosaic)
+library(ggplot2)
+
+library(nycflights13)
+library(tidyverse)
+```
+
+
+
+### If I am leaving before noon, what are my top two airline options at each airport (JFK, LGA, EWR) that will have the least amount of delay time?<br><br>
+
+##### John F. Kennedy International Airport (JFK)
+```{r, comment=NA}
+early_jfk <- filter(flights, sched_dep_time <= 1200 & origin == "JFK")
+q1 <- transmute(early_jfk,
+                sched_dep_time,
+                carrier,
+                total_delay = arr_delay + dep_delay
+                )
+q1g <- group_by(q1, carrier)
+summ1.1 <- summarise(q1g, avg_delay = mean(total_delay, na.rm = TRUE))
+arrange(summ1.1, avg_delay)
+```
+<br><br>
+
+##### LaGuardia Airport (LGA)
+```{r, comment=NA}
+early_lga <- filter(flights, sched_dep_time <= 1200 & origin == "LGA")
+q1 <- transmute(early_lga,
+                sched_dep_time,
+                carrier,
+                total_delay = arr_delay + dep_delay
+                )
+q1g <- group_by(q1, carrier)
+summ1.2 <- summarise(q1g, avg_delay = mean(total_delay, na.rm = TRUE))
+arrange(summ1.2, avg_delay)
+```
+<br><br>
+
+##### Newark Liberty International Airport (EWR)
+```{r, comment=NA}
+early_ewr <- filter(flights, sched_dep_time <= 1200 & origin == "EWR")
+q1 <- transmute(early_ewr,
+                sched_dep_time,
+                carrier,
+                total_delay = arr_delay + dep_delay
+                )
+q1g <- group_by(q1, carrier)
+summ1.3 <- summarise(q1g, avg_delay = mean(total_delay, na.rm = TRUE))
+arrange(summ1.3, avg_delay)
+```
+<br><br>
+
+
+
+
+### Which origin airport is best to minimize my chances of a late arrival when I am using Delta Airlines?
+
+```{r, comment=NA}
+on_time <- filter(flights, carrier == "DL")
+q2 <- group_by(on_time, origin)
+summ2 <- summarise(q2, avg_delay = mean(arr_delay, na.rm = TRUE))
+arrange(summ2, avg_delay)
+```
+
+
+### Which destination airport is the worst airport for arrival time?
+
+```{r, comment=NA}
+q3 <- group_by(flights, dest)
+summ3 <- summarise(q3, avg_delay = mean(arr_delay, na.rm = TRUE))
+arrange(summ3, desc(avg_delay))
+```
+
