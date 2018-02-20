@@ -3,6 +3,11 @@ The is part of the tutorial from GitHub
 My name is Daniel and I'm from California. I used to be an accounting major but I decided to change after learning about data science. 
 
 
+2/20/18
+Why have we built this class with the current grading structure and task format?
+
+The class was designed to imitate some of the experience of working in the real world. We are graded on completing tasks, not by attempting them. We are graded on quality as well, and each task is vague enough to allow room for creativity and uniqueness.
+
 <!-- 
 
 ```{r, include=FALSE}
