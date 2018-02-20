@@ -8,6 +8,11 @@ Why have we built this class with the current grading structure and task format?
 
 The class was designed to imitate some of the experience of working in the real world. We are graded on completing tasks, not by attempting them. We are graded on quality as well, and each task is vague enough to allow room for creativity and uniqueness.
 
+---------------
+
+1. I have a couple tasks and case studies to finish up before I can say that I've completed everything. My goal is to have everything completed before the end of February. I want to finish this class with an A, and I know it will take a lot of work to get there. 
+2. I will commit myself to spending more time on class work. 
+
 <!-- 
 
 ```{r, include=FALSE}
